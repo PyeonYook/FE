@@ -13,7 +13,7 @@
 
         <!-- Title Section -->
         <TextView
-            android:id="@+id/SignUp_title"
+            android:id="@+id/signUp_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -26,7 +26,7 @@
 
         <!-- Subtitle Section -->
         <TextView
-            android:id="@+id/SignUp_prompt"
+            android:id="@+id/signup_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -39,7 +39,7 @@
 
         <!-- Name Input -->
         <EditText
-            android:id="@+id/nameEditText"
+            android:id="@+id/signup_Name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
@@ -52,7 +52,7 @@
 
         <!-- Email Input -->
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/signup_Email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
@@ -65,7 +65,7 @@
 
         <!-- Password Input -->
         <EditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/signup_Password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
@@ -78,7 +78,7 @@
 
         <!-- Confirm Password Input -->
         <EditText
-            android:id="@+id/confirmPasswordEditText"
+            android:id="@+id/signup_Password2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="16dp"
@@ -91,7 +91,7 @@
 
         <!-- Sign-Up Button -->
         <android.widget.Button
-            android:id="@+id/signUpButton"
+            android:id="@+id/signup_Button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="16dp"
@@ -119,7 +119,7 @@
                 android:textColor="@color/gray"/>
 
             <TextView
-                android:id="@+id/signInText"
+                android:id="@+id/Login_Link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"

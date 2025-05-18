@@ -54,7 +54,7 @@ public class ProfileModify extends AppCompatActivity {
                 str_grade = et_grade.getText().toString();
                 str_stuNum = et_stuNum.getText().toString();
 
-                Intent intent = new Intent(ProfileModify.this , MainActivity.class);
+                Intent intent = new Intent(ProfileModify.this , Profile.class);
                 intent.putExtra("str_nickname",str_nickname);
                 intent.putExtra("str_name",str_name);
                 intent.putExtra("str_major",str_major);
