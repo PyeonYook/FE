@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Text Strings -->
+    <string name="app_name">편리한 삼육</string>
+    <string name="main_title">편리한 삼육</string>
+    <string name="login_prompt">편육계정 로그인</string>
+    <string name="subtitle">로그인하여 편육의 다양한 기능을 즐겨보세요</string>
+
+    <!-- Input Placeholder Text -->
+    <string name="email_hint">이메일</string>
+    <string name="password_hint">비밀번호</string>
+
+    <!-- Button Text -->
+    <string name="login_button_text">Login</string>
+
+    <!-- Sign-Up Section -->
+    <string name="signup_prompt">아직 회원이 아니신가요?</string>
+    <string name="signup_link">회원가입</string>
+
+    <!-- Policies Section -->
+    <string name="policies_text">By clicking continue, you agree to our Terms of Service\nand Privacy Policy</string>
+</resources>

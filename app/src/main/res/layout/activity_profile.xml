@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <!--마이페이지 왼쪽 상단 글씨-->
+    <TextView
+        android:id="@+id/title_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="316dp"
+        android:text="마이페이지"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--세부설정(앱정보, 알림설정 등)-->
+    <ImageButton
+        android:id="@+id/btn_setting"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
+
+    <!--프로필사진-->
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="89dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="276dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/icon"/>
+
+    <!--별명-->
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="78dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="172dp"
+        android:text="별명: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--프로필수정 버튼-->
+    <Button
+        android:id="@+id/btn_pfModi"
+        android:layout_width="321dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="44dp"
+        android:text="프로필수정"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--전공-->
+    <TextView
+        android:id="@+id/tv_major"
+        android:layout_width="321dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="44dp"
+        android:text="학과: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--학년-->
+    <TextView
+        android:id="@+id/tv_grade"
+        android:layout_width="321dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="44dp"
+        android:text="학년: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--학번-->
+    <TextView
+        android:id="@+id/tv_stuNum"
+        android:layout_width="321dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="278dp"
+        android:layout_marginEnd="44dp"
+        android:text="학번: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--이름-->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="70dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="180dp"
+        android:text="이름: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

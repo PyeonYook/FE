@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:gravity="center_horizontal">
+
+        <!-- Title Section -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="편리한 삼육"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#102C68"
+            android:gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"/>
+
+        <!-- Subtitle Section -->
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="편육계정 로그인"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#102C68"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="로그인하여 편육의 다양한 기능을 즐겨보세요"
+            android:textSize="14sp"
+            android:textColor="#102C68"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:paddingBottom="30dp"/>
+
+        <!-- Email Input -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:hint="이메일"
+            android:inputType="textEmailAddress"
+            android:textColor="#102C68"
+            android:textColorHint="#D3D3D3"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"/>
+
+        <!-- Password Input -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:textColor="#102C68"
+            android:textColorHint="#D3D3D3"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"/>
+
+        <!-- Login Button -->
+        <android.widget.Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <!-- Divider: - OR - -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#D3D3D3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="or"
+                android:textColor="#102C68"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#D3D3D3" />
+        </LinearLayout>
+
+        <!-- Sign-Up Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/signupPrompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아직 회원이 아니신가요?"
+                android:textSize="14sp"
+                android:textColor="#808080"/>
+
+            <TextView
+                android:id="@+id/signUpText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="회원가입"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#102C68"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <!-- Policies Section -->
+        <TextView
+            android:id="@+id/policiesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="By clicking continue, you agree to our Terms of Service\nand Privacy Policy"
+            android:textSize="12sp"
+            android:textColor="#808080"
+            android:lineSpacingExtra="4dp"
+            android:paddingTop="30dp"/>
+    </LinearLayout>
+</ScrollView>
