@@ -1,22 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Text Strings -->
     <string name="app_name">편리한 삼육</string>
-    <string name="main_title">편리한 삼육</string>
+    <!-- login -->
+    <string name="login_En">Login</string>
+    <string name="login">로그인</string>
+    <string name="login_text">이미 계정이 있으신가요?</string>
     <string name="login_prompt">편육계정 로그인</string>
-    <string name="subtitle">로그인하여 편육의 다양한 기능을 즐겨보세요</string>
+    <string name="login_sub_prompt">로그인하여 편육의 다양한 기능을 즐겨보세요</string>
+
+    <!-- signup -->
+    <string name="signup_En">SignUp</string>
+    <string name="signup">회원가입</string>
+    <string name="signup_text">아직 회원이 아니신가요?</string>
+    <string name="signup_prompt">계정을 생성하고 편육의 다양한 서비스를 경험해보세요</string>
 
     <!-- Input Placeholder Text -->
-    <string name="email_hint">이메일</string>
-    <string name="password_hint">비밀번호</string>
-
-    <!-- Button Text -->
-    <string name="login_button_text">Login</string>
-
-    <!-- Sign-Up Section -->
-    <string name="signup_prompt">아직 회원이 아니신가요?</string>
-    <string name="signup_link">회원가입</string>
+    <string name="name">이름</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="password2">비밀번호 확인</string>
 
     <!-- Policies Section -->
     <string name="policies_text">By clicking continue, you agree to our Terms of Service\nand Privacy Policy</string>
+
+    !-- 캠퍼스 안내 관련 항목 -->
+    <string name="campus_guide">캠퍼스 안내</string>
+    <string name="school_bus">스쿨버스</string>
+    <string name="official_school_account">학교 공식</string>
+    <string name="campus_map">캠퍼스맵</string>
+    <string name="convenience_facilities">편의시설</string>
+    <string name="keywords">키워드</string>
+
+    <!-- 내 정보 및 기본 설정 -->
+    <string name="my_info">내 정보</string>
+    <string name="my_profile">내 프로필</string>
+    <string name="settings">설정</string>
+    <string name="account">계정</string>
+    <string name="change_id">아이디 변경</string>
+    <string name="change_password">비밀번호 변경</string>
+    <string name="change_email">이메일 변경</string>
+
+    <!-- 앱 설정 -->
+    <string name="app_settings">앱 설정</string>
+    <string name="notification_settings">알림 설정</string>
+    <string name="text_size_settings">글씨 크기 설정</string>
+
+    <!-- 기타 -->
+    <string name="usage_guide">이용안내</string>
+    <string name="app_version">앱 버전</string>
+    <string name="terms_of_service">이용약관</string>
+    <string name="privacy_policy">개인정보처리방침</string>
+
+    <!-- CU 편의점 설명 -->
+    <string name="store_location">구내매점, 학생회관 1층, 운동장 건너편에 있습니다.</string>
+    <string name="cu_description">CU편의점은 학생회관 1층에 자리잡고 있습니다. 간단한 먹을거리, 편의용품, 음료수 등을 판매하고 있습니다.</string>
+
+    <!-- 파인하우스 설명 -->
+    <string name="pinehouse_title">파인하우스</string>
+    <string name="pinehouse_intro">새로워진 학생식당, 파인하우스에서 균형 잡힌 세 끼를 경험하세요.</string>
+    <string name="pinehouse_details">쾌적한 오픈 라운지 형태의 공간에서 조식, 중식, 석식을 제공하며, 한식과 특식 중 선택할 수 있도록 구성된 주간 식단이 운영됩니다. 천원의 아침밥으로 아침 한 끼를 챙겨보세요!</string>
+
+    <!-- 안경점 -->
+    <string name="optical_shop_title">안경점</string>
+    <string name="optical_shop_location">바울관 2층, 총학생회 사무실 옆에 있습니다.</string>
+    <string name="optical_shop_description">오랜 기간 친절로 학생들에게 서비스해 온 안경점은 졸업한 학생들로 찾아올 정도로 인기가 좋습니다.</string>
+
+    <!-- 복사실 -->
+    <string name="copy_room_title">복사실</string>
+    <string name="copy_room_location">바울관 지하 1층, 문구점 안에 있습니다.</string>
+    <string name="copy_room_description">학생들이 각종 과제를 해결할 때 꼭 필요한 복사실은 바울관 지하 1층 문구점 안에 있습니다.</string>
+
+    <!-- 서점 -->
+    <string name="bookstore_title">서점</string>
+    <string name="bookstore_location">전공서적이 필요하면 바울관 지하 1층으로.</string>
+    <string name="bookstore_description">다양한 전공서적들을 할인가로 만날 수 있는 구내서점입니다. 규모는 크지 않지만 학생들이 수업을 위해 필요한 책들을 취급하며 주문 구매도 가능합니다.</string>
+
+    <!-- 우리은행 -->
+    <string name="woori_bank_title">우리은행(삼육대점)</string>
+    <string name="woori_bank_intro">삼육대생들을 위한 금융 서비스를 누리세요.</string>
+    <string name="woori_bank_description">삼육대학의 주거래 은행인 우리은행은 학생들의 다양한 금융서비스 요구에 발맞추기 위하여 도서관 1층에 자리잡고 있습니다. 학생증 발급을 비롯하여 우리 재학생들을 위한 다양한 금융상품도 판매하고 있습니다.</string>
+
+    <!-- 우체국 -->
+    <string name="post_office_title">우체국(삼육대점)</string>
+    <string name="post_office_intro">택배를 보내거나 금융 서비스를 이용할 수 있습니다.</string>
+    <string name="post_office_description">제3과학관 1층에 있는 우체국에서 택배를 비롯한 우편서비스를 받을 수 있고 다양한 금융, 보험 상품도 만나보실 수 있습니다.</string>
+
+    <!-- ATM -->
+    <string name="atm_title">ATM(NH농협, 우체국)</string>
+    <string name="atm_location">바울관 1층, 학생회관 1층, 백주년기념관 1층에 있습니다.</string>
+    <string name="atm_description">현금이 필요한 학생들을 위하여 농협(바울관 1층), 우체국(바울관 1층, 제3과학관 1층), 우리은행(도서관 1층, 학생회관 1층, 백주년기념관 1층)에 ATM기기들이 준비되어 있습니다.</string>
+
+    <!-- 스쿨버스 이용시 주의사항 -->
+    <string name="school_bus_notice_title">스쿨버스 이용시 주의사항</string>
+
+    <!-- 주요 안내사항 -->
+    <string name="school_bus_notice_1">가급적 지정시간 전부터 기다려주시고, 출퇴근길 또는 교통사고 유무에 따라 지정체가 되는 지역이 있으므로 집에서 좀 더 여유롭게 출발해 정류장에 도착하시기를 권합니다.</string>
+    <string name="school_bus_notice_2">삼육대학교 스쿨버스는 무료로 이용하실 수 있습니다. 단, 등산객 및 주변지역 단순 거주자 등은 이용할 수 없습니다.</string>
+    <string name="school_bus_notice_3">금요일은 오후 3시에 모든 운행이 종료됩니다.</string>
+    <string name="school_bus_notice_4">기타 자세한 문의는 본교 수송팀(02-3399-3510, 3511)으로 문의 바랍니다.</string>
 </resources>

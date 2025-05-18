@@ -8,31 +8,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:padding="40dp"
         android:gravity="center_horizontal">
 
         <!-- Title Section -->
         <TextView
-            android:id="@+id/titleSignUp"
+            android:id="@+id/SignUp_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="회원가입"
+            android:text="@string/signup"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#102C68"
+            android:textColor="@color/SahmYook"
             android:gravity="center"
             android:padding="8dp"/>
 
         <!-- Subtitle Section -->
         <TextView
-            android:id="@+id/subtitleSignUp"
+            android:id="@+id/SignUp_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="계정을 생성하고 편육의 다양한 서비스를 경험해보세요"
+            android:text="@string/signup_prompt"
             android:textSize="14sp"
-            android:textColor="#102C68"
+            android:textColor="@color/SahmYook"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:padding="8dp"/>
@@ -43,10 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
-            android:hint="이름"
+            android:hint="@string/name"
             android:inputType="textPersonName"
-            android:textColor="#102C68"
-            android:textColorHint="#D3D3D3"
+            android:textColor="@color/SahmYook"
+            android:textColorHint="@color/hint"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"/>
 
@@ -56,10 +56,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
-            android:hint="이메일"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColor="#102C68"
-            android:textColorHint="#D3D3D3"
+            android:textColor="@color/SahmYook"
+            android:textColorHint="@color/hint"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"/>
 
@@ -69,10 +69,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
-            android:hint="비밀번호"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColor="#102C68"
-            android:textColorHint="#D3D3D3"
+            android:textColor="@color/SahmYook"
+            android:textColorHint="@color/hint"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"/>
 
@@ -82,10 +82,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="16dp"
-            android:hint="비밀번호 확인"
+            android:hint="@string/password2"
             android:inputType="textPassword"
-            android:textColor="#102C68"
-            android:textColorHint="#D3D3D3"
+            android:textColor="@color/SahmYook"
+            android:textColorHint="@color/hint"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"/>
 
@@ -96,9 +96,9 @@
             android:layout_height="50dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
-            android:text="회원가입"
+            android:text="@string/signup"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"/>
 
@@ -114,19 +114,19 @@
                 android:id="@+id/signInPrompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이미 계정이 있으신가요?"
+                android:text="@string/login_text"
                 android:textSize="14sp"
-                android:textColor="#102C68"/>
+                android:textColor="@color/gray"/>
 
             <TextView
                 android:id="@+id/signInText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:text="로그인"
+                android:text="@string/login"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="#102C68"
+                android:textColor="@color/SahmYook"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground"
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="16dp"
-            android:text="By signing up, you agree to our Terms of Service\nand Privacy Policy"
+            android:text="@string/policies_text"
             android:textSize="12sp"
             android:textColor="#808080"
             android:lineSpacingExtra="4dp"/>
