@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">편리한 삼육</string>
+    <string name="title_convenient_samyook">편리한 삼육</string>
+
+    <!-- Bottom Navigation Titles -->
+    <string name="bottom_nav_home">홈</string>
+    <string name="bottom_nav_schedule">일정</string>
+    <string name="bottom_nav_add">추가</string>
+    <string name="bottom_nav_notifications">알림</string>
+    <string name="bottom_nav_profile">프로필</string>
+
+    <!-- 일정 관련 -->
+    <string name="todays_todo">오늘의 할일</string>
+    <string name="tomorrows_schedule">내일의 일정</string>
+    <string name="add_view_all">추가 전체보기</string>
+    <string name="timetable_not_registered">시간표가 등록되지 않았습니다.</string>
+    <string name="view_all">전체보기</string>
+    <string name="timetable_title">시간표</string>
+
     <!-- login -->
     <string name="login_En">Login</string>
     <string name="login">로그인</string>
@@ -24,7 +41,7 @@
     <!-- Policies Section -->
     <string name="policies_text">By clicking continue, you agree to our Terms of Service\nand Privacy Policy</string>
 
-    !-- 캠퍼스 안내 관련 항목 -->
+    <!-- 캠퍼스 안내 관련 항목 -->
     <string name="campus_guide">캠퍼스 안내</string>
     <string name="school_bus">스쿨버스</string>
     <string name="official_school_account">학교 공식</string>

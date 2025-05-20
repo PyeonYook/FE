@@ -16,6 +16,16 @@
         android:networkSecurityConfig="@xml/network_security_config"
         >
 
+        <!-- Main Activity (앱 시작 진입점) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- Profile Activity -->
         <activity
             android:name=".Profile"
@@ -35,7 +45,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> -->
 
     </application>
 </manifest>
