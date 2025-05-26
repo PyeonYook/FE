@@ -41,12 +41,13 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    // Retrofit 2.9.0 라이브러리 추가
+
+    // Retrofit 라이브러리
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
-    // GSON 컨버터: JSON 데이터를 객체로 변환
+    // JSON 데이터 처리를 위한 GSON 컨버터
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // (선택) OkHttp 로깅 인터셉터: 네트워크 요청/응답 데이터 로깅
+    // (선택) OkHttp 로깅 인터셉터 - 네트워크 요청/응답 디버깅용
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }

@@ -5,12 +5,11 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
-
-    @POST("/users/signup")  // 회원가입 API
+    // 회원가입 엔드포인트 정의
+    @POST("/users/signup")
     Call<Void> createUser(@Body SignupRequest signupRequest);
 
-    @POST("/users/login")   // 로그인 API
+    // 로그인 엔드포인트 정의
+    @POST("/users/login")
     Call<Void> login(@Body LoginRequest loginRequest);
-
-    Call<Void> login(String email, String password);
 }
