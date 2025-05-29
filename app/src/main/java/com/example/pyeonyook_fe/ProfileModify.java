@@ -37,10 +37,9 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
-        et_nickname = findViewById(R.id.et_nickname);
+
         et_name = findViewById(R.id.et_name);
         et_major = findViewById(R.id.et_major);
-        et_grade = findViewById(R.id.et_grade);
         et_stuNum = findViewById(R.id.et_stuNum);
         btn_save = findViewById(R.id.btn_save);
 
