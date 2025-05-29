@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1062377167925",
+    "project_id": "pyeonyook-ce309",
+    "storage_bucket": "pyeonyook-ce309.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062377167925:android:28b21a1db37a0df127e57c",
+        "android_client_info": {
+          "package_name": "com.example.pyeonyook_fe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCApAOjYX8Jms9tlxYwszdqOCkpcGXt6qs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
