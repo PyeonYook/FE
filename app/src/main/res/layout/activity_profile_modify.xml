@@ -1,99 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pyeonyook_fe.ProfileModify">
+    tools:context=".ProfileModify"
+    android:orientation="vertical"
+    android:background="#FAF9F6">
 
-    <!--사용자가 등록한 프로필이미지-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로필 수정"
+        android:textColor="#012460"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        />
+
     <ImageView
         android:id="@+id/iv_preview"
-        android:layout_width="89dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="264dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:src="@drawable/icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round"
+        android:layout_marginTop="30dp"
         android:contentDescription="선택된 이미지 미리보기"/>
 
-    <!--저장 및 돌아가기 (나중에 따로 나눌 예정)-->
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="93dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="25dp"
-        android:text="저장"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
-    <!--별명 입력-->
-    <EditText
-        android:id="@+id/et_nickname"
-        android:layout_width="114dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="242dp"
-        android:hint="별명"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!--이미지 등록버튼-->
+        <android.widget.Button
+            android:id="@+id/btn_selectImage"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:text="사진 올리기"
+            android:textSize="10dp"
+            android:textColor="#121212"
+            android:background="@drawable/squre_btn"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            />
 
-    <!--전공입력-->
-    <EditText
-        android:id="@+id/et_major"
-        android:layout_width="273dp"
-        android:layout_height="45dp"
-        android:hint="전공"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="84dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <android.widget.Button
+            android:id="@+id/btn_defaultImage"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:text="기본이미지로 변경"
+            android:textSize="10dp"
+            android:textColor="#121212"
+            android:background="@drawable/squre_btn"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            />
 
-    <!--이름 입력-->
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="114dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="242dp"
-        android:hint="이름"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-    <!--학년입력-->
-    <EditText
-        android:id="@+id/et_grade"
-        android:layout_width="273dp"
-        android:layout_height="45dp"
-        android:hint="학년"
-        android:layout_marginTop="376dp"
-        android:layout_marginEnd="84dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
 
-    <!--학번입력-->
-    <EditText
-        android:id="@+id/et_stuNum"
-        android:layout_width="273dp"
-        android:layout_height="45dp"
-        android:hint="학번"
-        android:layout_marginTop="424dp"
-        android:layout_marginEnd="84dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textSize="12dp"
+            android:textColor="#B3B3B3" />
 
-    <!--이미지 등록버튼-->
-    <Button
-        android:id="@+id/btn_selectImage"
-        android:layout_width="92dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="160dp"
-        android:text="이미지등록"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!--이름 입력-->
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="예) 김춘식"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학번"
+            android:textSize="12dp"
+            android:textColor="#B3B3B3"
+            android:layout_marginTop="20dp" />
+
+        <!--학번입력-->
+        <EditText
+            android:id="@+id/et_stuNum"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="예) 2022000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학과"
+            android:textSize="12dp"
+            android:textColor="#B3B3B3"
+            android:layout_marginTop="20dp" />
+
+        <!--전공입력-->
+        <EditText
+            android:id="@+id/et_major"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="예) 컴퓨터공학과" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재학여부"
+            android:textSize="12dp"
+            android:textColor="#B3B3B3"
+            android:layout_marginTop="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:textSize="17dp"
+                android:textColor="#FAF9F6"
+                android:text="저장"
+                android:backgroundTint="#120460" />
+
+        </LinearLayout>
+        <!--저장 및 돌아가기 (나중에 따로 나눌 예정)-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</LinearLayout>
