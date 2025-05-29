@@ -1,101 +1,202 @@
-package com.example.pyeonyook_fe;
+package com.example.pyeonyook_fe; // Use your actual package name
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
+// Import RecyclerView and related classes if you choose to use it
+// import androidx.recyclerview.widget.LinearLayoutManager;
+// import androidx.recyclerview.widget.RecyclerView;
+// import java.util.ArrayList;
+// import java.util.List;
 
-    private NavigationBarView bottomNavView;
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    // If using RecyclerView:
+    // private RecyclerView recyclerViewKeywords;
+    // private KeywordAdapter keywordAdapter;
+    // private List<KeywordItem> keywordItemList;
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // Assuming your main activity layout includes the bottom navigation
+        // and a FrameLayout or NavHostFragment to host this content.
+        // If this XML (`activity_main_content.xml`) is the *entire* content for MainActivity:
+        setContentView(R.layout.activity_main); // Or your specific layout file name
 
-        bottomNavView = findViewById(R.id.bottom_nav_view);
-        bottomNavView.setOnItemSelectedListener(this);
-        
-        // 기본으로 홈 화면 표시
-        if (savedInstanceState == null) {
-            bottomNavView.setSelectedItemId(R.id.navigation_home);
-            updateMenuIcons(R.id.navigation_home);
-        }
+        setupScheduleCards();
+        setupKeywordsSection();
+        setupBottomNavigation();
+
+        // If you are using RecyclerView for keywords:
+        /*
+        recyclerViewKeywords = findViewById(R.id.recyclerViewKeywords);
+        recyclerViewKeywords.setLayoutManager(new LinearLayoutManager(this));
+
+        keywordItemList = new ArrayList<>();
+        // Add placeholder data or fetch from a data source
+        keywordItemList.add(new KeywordItem(R.drawable.ic_avatar_placeholder, "삼육대학교", "시온관(남생활관) 움 확진자 발생에 따른 경..."));
+        keywordItemList.add(new KeywordItem(R.drawable.ic_avatar_placeholder, "학사지원팀", "email@fakedomain.net"));
+        // Add more items as needed
+
+        keywordAdapter = new KeywordAdapter(this, keywordItemList);
+        recyclerViewKeywords.setAdapter(keywordAdapter);
+        */
+
+        // If you're using the static <include> for keyword items,
+        // you can find their views if you need to interact with them,
+        // but they are already populated by the XML.
+        // Example for static item 1's avatar (if you gave it a unique ID in the included layout)
+        // ImageView avatar1 = findViewById(R.id.imageViewAvatar1); // You'd need to add this ID in the static include
+    }
+
+    private void setupBottomNavigation() {
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        // 초기 선택 상태 설정 (홈 화면)
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment selectedFragment = null;
         int itemId = item.getItemId();
-
-        // 아이콘 상태 갱신
-        updateMenuIcons(itemId);
-
+        
+        // 현재 선택된 아이템의 아이콘을 _active 버전으로 변경
         if (itemId == R.id.navigation_home) {
-            // TODO: HomeFragment 구현 후 교체
-            // selectedFragment = new HomeFragment();
+            item.setIcon(R.drawable.ic_menu_home_active);
         } else if (itemId == R.id.navigation_calendar) {
-            // TODO: ScheduleFragment 구현 후 교체
-            // selectedFragment = new ScheduleFragment();
+            item.setIcon(R.drawable.ic_menu_calendar_active);
         } else if (itemId == R.id.navigation_add) {
-            // TODO: AddFragment 구현 후 교체
-            // selectedFragment = new AddFragment();
+            item.setIcon(R.drawable.ic_menu_add_active);
         } else if (itemId == R.id.navigation_notification) {
-            // TODO: NotificationsFragment 구현 후 교체
-            // selectedFragment = new NotificationsFragment();
+            item.setIcon(R.drawable.ic_menu_notification_active);
         } else if (itemId == R.id.navigation_profile) {
-            // TODO: ProfileFragment 구현 후 교체
-            // selectedFragment = new ProfileFragment();
+            item.setIcon(R.drawable.ic_menu_person_active);
         }
 
-        if (selectedFragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, selectedFragment)
-                    .commit();
-            return true;
+        // 이전에 선택된 아이템의 아이콘을 원래 버전으로 변경
+        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+            MenuItem menuItem = bottomNavigationView.getMenu().getItem(i);
+            if (menuItem.getItemId() != itemId) {
+                if (menuItem.getItemId() == R.id.navigation_home) {
+                    menuItem.setIcon(R.drawable.ic_menu_home);
+                } else if (menuItem.getItemId() == R.id.navigation_calendar) {
+                    menuItem.setIcon(R.drawable.ic_menu_calendar);
+                } else if (menuItem.getItemId() == R.id.navigation_add) {
+                    menuItem.setIcon(R.drawable.ic_menu_add);
+                } else if (menuItem.getItemId() == R.id.navigation_notification) {
+                    menuItem.setIcon(R.drawable.ic_menu_notification);
+                } else if (menuItem.getItemId() == R.id.navigation_profile) {
+                    menuItem.setIcon(R.drawable.ic_menu_person);
+                }
+            }
         }
+
         return true;
     }
 
-    private void updateMenuIcons(int selectedItemId) {
-    if (bottomNavView.getMenu() == null) return;
+    private void setupScheduleCards() {
+        // 오늘의 할일 카드 설정
+        TextView todayTitle = findViewById(R.id.cardToday).findViewById(R.id.textViewCardTitle);
+        TextView todayDate = findViewById(R.id.cardToday).findViewById(R.id.textViewCardDate);
+        TextView todayContent = findViewById(R.id.cardToday).findViewById(R.id.textViewCardContent);
 
-    for (int i = 0; i < bottomNavView.getMenu().size(); i++) {
-        MenuItem item = bottomNavView.getMenu().getItem(i);
-        String resName = getResources().getResourceEntryName(item.getItemId()); // ex: navigation_add
-        String iconName = "ic_menu_" + resName.replace("navigation_", "");
-        if (item.getItemId() == selectedItemId) {
-            iconName += "_active";
+        todayTitle.setText("오늘의 할일");
+        todayDate.setText(getFormattedDate(0));
+        todayContent.setText("추가 전체보기");
+
+        // 내일의 일정 카드 설정
+        TextView tomorrowTitle = findViewById(R.id.cardTomorrow).findViewById(R.id.textViewCardTitle);
+        TextView tomorrowDate = findViewById(R.id.cardTomorrow).findViewById(R.id.textViewCardDate);
+        TextView tomorrowContent = findViewById(R.id.cardTomorrow).findViewById(R.id.textViewCardContent);
+
+        tomorrowTitle.setText("내일의 일정");
+        tomorrowDate.setText(getFormattedDate(1));
+        tomorrowContent.setText("시간표가 등록되지 않음");
+
+        // 주간 일정 카드 설정
+        TextView weekTitle = findViewById(R.id.cardWeek).findViewById(R.id.textViewCardTitle);
+        TextView weekDate = findViewById(R.id.cardWeek).findViewById(R.id.textViewCardDate);
+        TextView weekContent = findViewById(R.id.cardWeek).findViewById(R.id.textViewCardContent);
+
+        weekTitle.setText("주간 일정");
+        weekDate.setText(getWeekDateRange());
+        weekContent.setText("이번 주 시험 일정");
+    }
+
+    private void setupKeywordsSection() {
+        TextView textViewKeywordsSeeAll = findViewById(R.id.textViewKeywordsSeeAll);
+        textViewKeywordsSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "전체보기 클릭됨", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String getFormattedDate(int daysToAdd) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, daysToAdd);
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M월 d일 (E)", new Locale("ko", "KR"));
+        return dateFormat.format(calendar.getTime());
+    }
+
+    private String getWeekDateRange() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M/d", new Locale("ko", "KR"));
+        String startDate = dateFormat.format(calendar.getTime());
+        
+        calendar.add(Calendar.DAY_OF_WEEK, 6);
+        String endDate = dateFormat.format(calendar.getTime());
+        
+        return startDate + " ~ " + endDate;
+    }
+
+    // If using RecyclerView, create a data model class (KeywordItem.java)
+    /*
+    public static class KeywordItem {
+        private int avatarResId; // Use String for URL if loading from network
+        private String title;
+        private String subtitle;
+
+        public KeywordItem(int avatarResId, String title, String subtitle) {
+            this.avatarResId = avatarResId;
+            this.title = title;
+            this.subtitle = subtitle;
         }
-        int iconResId = getResources().getIdentifier(iconName, "drawable", getPackageName());
-        if (iconResId != 0) {
-            item.setIcon(iconResId);
+
+        public int getAvatarResId() {
+            return avatarResId;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getSubtitle() {
+            return subtitle;
         }
     }
-}
+    */
 
-
-    // private void updateMenuIcons(int selectedItemId) {
-    //     if (bottomNavView.getMenu() == null) return;
-
-    //     for (int i = 0; i < bottomNavView.getMenu().size(); i++) {
-    //         MenuItem item = bottomNavView.getMenu().getItem(i);
-    //         String resName = getResources().getResourceEntryName(item.getItemId()); // ex: navigation_home
-    //         String iconName = "ic_menu_" + resName.replace("navigation_", "");
-    //         if (item.getItemId() == selectedItemId) {
-    //             iconName += "_active";
-    //         }
-    //         int iconResId = getResources().getIdentifier(iconName, "drawable", getPackageName());
-    //         if (iconResId != 0) {
-    //             item.setIcon(iconResId);
-    //         }
-    //     }
-    // }
-}package com.example.pyeonyook_fe;
-
-public class MainActivity {
+    // If using RecyclerView, create an Adapter (KeywordAdapter.java)
+    /*
+    // See a typical RecyclerView adapter implementation.
+    // You would inflate R.layout.list_item_keyword in its onCreateViewHolder
+    // and bind data in onBindViewHolder.
+    */
 }

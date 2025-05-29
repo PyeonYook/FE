@@ -13,4 +13,19 @@
     <color name="light_gray">#F0F0F0</color>
     <color name="medium_gray">#A0A0A0</color>
     <color name="dark_blue">#0D47A1</color> <!-- 예시 타이틀 색상 -->
+
+    <color name="colorPrimaryText">#FF072A6C</color> <!-- Dark Blue from image -->
+    <color name="colorSecondaryText">#FF888888</color> <!-- Grey -->
+<!--    <color name="colorCardBorder">#FFE0E0E0</color>   &lt;!&ndash; Light Grey for card borders &ndash;&gt;-->
+    <color name="colorKeywordTitleText">#FF333333</color> <!-- Darker Grey for keyword titles -->
+    <color name="colorBackground">#FFFFFFFF</color>    <!-- White -->
+<!--    <color name="colorHeaderUnderline">#FF072A6C</color> &lt;!&ndash; Dark Blue for underline &ndash;&gt;-->
+    <color name="colorAvatarPlaceholder">#FFCCCCCC</color> <!-- Placeholder for avatar -->
+
+    <color name="colorPrimary">#1E88E5</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="colorHeaderUnderline">#E0E0E0</color>
+    <color name="colorCardBorder">#E0E0E0</color>
+
 </resources>

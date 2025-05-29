@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_standard">16dp</dimen>
+    <dimen name="padding_card_internal">12dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="header_underline_height">3dp</dimen>
+    <dimen name="header_underline_width">100dp</dimen>
+    <dimen name="avatar_size">44dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+
+    <!-- New/Updated dimension for cards in horizontal scroll -->
+    <dimen name="card_horizontal_item_width">160dp</dimen> <!-- Adjust this value as needed -->
+    <dimen name="card_horizontal_item_spacing">8dp</dimen> <!-- Spacing between cards -->
+</resources>
