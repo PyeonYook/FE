@@ -1,5 +1,6 @@
 package com.example.pyeonyook_fe; // Use your actual package name
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         // 현재 선택된 아이템의 아이콘을 _active 버전으로 변경
         if (itemId == R.id.navigation_home) {
             item.setIcon(R.drawable.ic_menu_home_active);
+
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
         } else if (itemId == R.id.navigation_add) {
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             item.setIcon(R.drawable.ic_menu_notification_active);
         } else if (itemId == R.id.navigation_profile) {
             item.setIcon(R.drawable.ic_menu_person_active);
+            Intent intent = new Intent(this, Profile.class);
+            startActivity(intent);
         }
 
         // 이전에 선택된 아이템의 아이콘을 원래 버전으로 변경
@@ -165,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         
         return startDate + " ~ " + endDate;
     }
+
 
     // If using RecyclerView, create a data model class (KeywordItem.java)
     /*

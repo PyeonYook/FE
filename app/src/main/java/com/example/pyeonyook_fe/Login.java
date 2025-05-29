@@ -23,8 +23,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 
 public class Login extends AppCompatActivity {
 
@@ -62,9 +60,6 @@ public class Login extends AppCompatActivity {
                                     if (tokenTask.isSuccessful()) {
                                         String idToken = tokenTask.getResult().getToken();
                                         Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show();
-
-                                        // 2. 서버로 API 요청 (예시: 공지 전체 가져오기)
-                                        getNoticesWithToken(idToken);
 
                                         // 화면 이동(원하면 MainActivity로)
                                         startActivity(new Intent(this, MainActivity.class));
