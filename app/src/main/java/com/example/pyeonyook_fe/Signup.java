@@ -28,6 +28,7 @@ public class Signup extends AppCompatActivity {
         editTextName = findViewById(R.id.signup_Name);
         editTextStdno = findViewById(R.id.signup_Stdno);
 
+<<<<<<< HEAD
         Button registerBtn = findViewById(R.id.signup_Button);
         registerBtn.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
@@ -39,10 +40,19 @@ public class Signup extends AppCompatActivity {
                 Toast.makeText(this, "모든 정보를 입력하세요.", Toast.LENGTH_SHORT).show();
                 return;
             }
+=======
+        Button signupBtn = findViewById(R.id.signup_Button);
+        signupBtn.setOnClickListener(v -> {
+            String email = editTextEmail.getText().toString();
+            String pw = editTextPassword.getText().toString();
+            String name = editTextName.getText().toString();
+            String stdno = editTextName.getText().toString();
+>>>>>>> 945f8a810deef454d78558de4d59c4956615a13a
 
             mAuth.createUserWithEmailAndPassword(email, pw)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
+<<<<<<< HEAD
                             Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                             finish(); // 로그인 화면으로 복귀
                         } else {
@@ -58,6 +68,16 @@ public class Signup extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
+=======
+                            // 성공
+                            Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+                            finish(); // 로그인 화면으로 이동 등
+                        } else {
+                            // 실패
+                            Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+>>>>>>> 945f8a810deef454d78558de4d59c4956615a13a
         });
     }
 }

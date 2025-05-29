@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.example.pyeonyook_fe.api.Notice;
 import com.example.pyeonyook_fe.api.NoticeApi;
 import com.example.pyeonyook_fe.api.RetrofitClient;
@@ -21,6 +22,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class Login extends AppCompatActivity {
 
@@ -41,6 +45,7 @@ public class Login extends AppCompatActivity {
         loginBtn.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
             String pw = editTextPassword.getText().toString();
+
 
             if (email.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this, "이메일과 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
