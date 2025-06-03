@@ -113,7 +113,7 @@
                             android:id="@+id/textViewKeywordsLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="키워드"
+                            android:text="공지"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="18sp"
                             android:textStyle="bold"
