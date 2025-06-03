@@ -50,6 +50,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    // GridLayout 의존성 추가
+    implementation("androidx.gridlayout:gridlayout:1.1.0")
+
+
     // Retrofit 라이브러리
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
