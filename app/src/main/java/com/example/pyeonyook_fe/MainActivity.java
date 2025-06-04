@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
-            Intent intent = new Intent(MainActivity.this, com.example.pyeonyook_fe.Calendar.class);
+            Intent intent = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
 

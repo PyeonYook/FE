@@ -18,7 +18,16 @@
         android:networkSecurityConfig="@xml/network_security_config"
         >
         <activity android:name=".MainActivity" android:exported="false" />
-
+        <!-- Login Activity (앱 시작 진입점 / Launcher) -->
+        <activity
+            android:name=".Login"
+            android:exported="true"> <!-- 반드시 exported="true" -->
+            <intent-filter>
+                <!-- 앱 진입점 설정 -->
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- Profile Activity -->
         <activity
             android:name=".Profile"
@@ -27,12 +36,8 @@
         <!-- Calendar Activity -->
         <activity
             android:name=".Calendar"
-            android:exported="true">
-            <intent-filter>
-                <!-- 앱 진입점 설정 -->
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <!-- Signup Activity -->
@@ -40,12 +45,7 @@
             android:name=".Signup"
             android:exported="false" />
 
-        <!-- Login Activity (앱 시작 진입점 / Launcher) -->
-        <activity
-            android:name=".Login"
-            android:exported="true"> <!-- 반드시 exported="true" -->
 
-        </activity>
 
     </application>
 </manifest>

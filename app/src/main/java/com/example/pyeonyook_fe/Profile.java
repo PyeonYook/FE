@@ -44,8 +44,16 @@ public class Profile extends AppCompatActivity {
             } else if (itemId == R.id.navigation_profile) {
                 // 현재 페이지 무반응
                 return true;
+            }else if (itemId == R.id.navigation_calendar) {
+                item.setIcon(R.drawable.ic_menu_calendar_active);
+                Intent intent = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }else if (itemId == R.id.navigation_add) {
+                item.setIcon(R.drawable.ic_menu_add_active);
+            } else if (itemId == R.id.navigation_notification) {
+                item.setIcon(R.drawable.ic_menu_notification_active);
             }
-            // TODO: 다른 메뉴 추가
             return false;
         });
         bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
