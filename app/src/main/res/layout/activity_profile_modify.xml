@@ -117,13 +117,6 @@
             android:layout_height="40dp"
             android:hint="예) 컴퓨터공학과" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="재학여부"
-            android:textSize="12dp"
-            android:textColor="#B3B3B3"
-            android:layout_marginTop="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,27 +125,19 @@
             android:gravity="center"
             android:layout_marginTop="20dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_save"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:textSize="17dp"
+                android:background="@drawable/button_background"
+                android:textSize="17sp"
                 android:textColor="#FAF9F6"
-                android:text="저장"
-                android:backgroundTint="#120460" />
+                android:text="저장" />
 
         </LinearLayout>
         <!--저장 및 돌아가기 (나중에 따로 나눌 예정)-->
 
 
     </LinearLayout>
-
-
-
-
-
-
-
-
 
 </LinearLayout>

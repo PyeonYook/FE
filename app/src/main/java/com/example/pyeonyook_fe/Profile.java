@@ -23,6 +23,10 @@ public class Profile extends AppCompatActivity {
     private TextView tv_stuNum;
     private ImageButton btn_pfModi;
     private ImageView iv_profile;
+    private Button btn_changeEmail;
+    private Button btn_changePw;
+    private Button btn_notification;
+    private Button btn_keyword;
 
 
     @Override
@@ -56,8 +60,13 @@ public class Profile extends AppCompatActivity {
         tv_major = findViewById(R.id.tv_major);
 
         tv_stuNum = findViewById(R.id.tv_stuNum);
-        btn_pfModi = findViewById(R.id.btn_pfedit);
+        btn_pfModi = findViewById(R.id.btn_pfModi);
         iv_profile = findViewById(R.id.iv_profile);
+
+        btn_changeEmail = findViewById(R.id.btn_changeEmail);
+        btn_changePw = findViewById(R.id.btn_changePw);
+        btn_notification = findViewById(R.id.btn_notification);
+        btn_keyword = findViewById(R.id.btn_keyword);
 
         // Intent로 값 세팅
         Intent intent = getIntent();
@@ -82,6 +91,30 @@ public class Profile extends AppCompatActivity {
         // 프로필 수정 버튼 클릭
         btn_pfModi.setOnClickListener(v -> {
             Intent modifyIntent = new Intent(Profile.this, ProfileModify.class);
+            startActivity(modifyIntent);
+        });
+
+        // 비밀번호 변경 클릭
+        btn_changePw.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Setting_ChangePw.class);
+            startActivity(modifyIntent);
+        });
+
+        // 이메일 변경 클릭
+        btn_changeEmail.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Setting_ChangeEmail.class);
+            startActivity(modifyIntent);
+        });
+
+        //키워드 설정 버튼 클릭
+        btn_keyword.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Setting_Keywords.class);
+            startActivity(modifyIntent);
+        });
+
+        //알림설정 버튼 클릭
+        btn_notification.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Setting_Notification.class);
             startActivity(modifyIntent);
         });
 
