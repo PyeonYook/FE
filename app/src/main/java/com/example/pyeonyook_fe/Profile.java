@@ -42,7 +42,7 @@ public class Profile extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_profile) {
-                // 현재 페이지 무반응
+                item.setIcon(R.drawable.ic_menu_person_active);
                 return true;
             }else if (itemId == R.id.navigation_calendar) {
                 item.setIcon(R.drawable.ic_menu_calendar_active);
@@ -55,6 +55,8 @@ public class Profile extends AppCompatActivity {
                 item.setIcon(R.drawable.ic_menu_notification_active);
             }
             return false;
+
+
         });
         bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
 
