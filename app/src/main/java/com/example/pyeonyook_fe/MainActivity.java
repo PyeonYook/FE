@@ -1,23 +1,24 @@
 package com.example.pyeonyook_fe; // Use your actual package name
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-//add
 import androidx.gridlayout.widget.GridLayout;
-import android.graphics.Color;
-import android.view.Gravity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 
@@ -132,7 +133,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         textViewKeywordsSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "전체보기 클릭됨", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, NoticeActivity.class);
+                startActivity(intent);
             }
         });
     }
