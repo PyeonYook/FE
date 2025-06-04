@@ -37,8 +37,11 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
     private RecyclerView scheduleList;
     private TextView monthText;
     private TextView monthYearText;
+    private TextView eventDateText;
     private YearMonth currentMonth;
     private YearMonth selectedMonth;
+    private LocalDate selectedDate;
+    private LocalDate previousSelectedDate;
     private boolean isScrolling = false;
     private CalendarMonth lastVisibleMonth = null;
     private Handler handler = new Handler(Looper.getMainLooper());
@@ -118,6 +121,12 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
                 throw new RuntimeException("monthYearText를 찾을 수 없습니다.");
             }
 
+            eventDateText = findViewById(R.id.eventDateText);
+            if (eventDateText == null) {
+                Log.e(TAG, "eventDateText를 찾을 수 없습니다.");
+                throw new RuntimeException("eventDateText를 찾을 수 없습니다.");
+            }
+
             scheduleList = findViewById(R.id.scheduleList);
             if (scheduleList == null) {
                 Log.e(TAG, "scheduleList를 찾을 수 없습니다.");
@@ -143,11 +152,15 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
     private void setupCalendar() {
         currentMonth = YearMonth.now();
         selectedMonth = currentMonth;
+        selectedDate = LocalDate.now(); // 기본값을 오늘 날짜로 설정
 
         // 현재 날짜와 월 표시
         LocalDate today = LocalDate.now();
         monthText.setText(String.valueOf(today.getDayOfMonth()));
         monthYearText.setText(String.valueOf(today.getMonthValue()));
+        
+        // 오늘 날짜로 eventDateText 초기화
+        updateEventDateText(selectedDate);
 
         // 캘린더 설정
         WeekFields weekFields = WeekFields.of(Locale.getDefault());
@@ -182,6 +195,13 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
                 container.textView.setText(String.valueOf(day.getDate().getDayOfMonth()));
                 container.day = day;
 
+                // 선택된 날짜 표시
+                if (day.getDate().equals(selectedDate)) {
+                    container.todayIndicator.setVisibility(View.VISIBLE);
+                } else {
+                    container.todayIndicator.setVisibility(View.GONE);
+                }
+
                 // 공휴일이거나 일요일인 경우 빨간색으로 표시
                 if (day.getPosition() == DayPosition.MonthDate) {
                     if (KoreanHoliday.isHoliday(day.getDate()) || day.getDate().getDayOfWeek().getValue() == 7) {
@@ -191,8 +211,6 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
                     } else {
                         container.textView.setTextColor(0xFF000000); // 검정색
                     }
-                } else {
-                    container.textView.setTextColor(0xFFCCCCCC); // 회색 (이전/다음 달 날짜)
                 }
             }
         });
@@ -202,16 +220,32 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
         calendarView.setMonthScrollListener(null);
     }
 
+    private void updateEventDateText(LocalDate date) {
+        String[] weekDays = {"월", "화", "수", "목", "금", "토", "일"};
+        String weekDay = weekDays[date.getDayOfWeek().getValue() - 1];
+        eventDateText.setText(String.format("%d월 %d일 (%s)", date.getMonthValue(), date.getDayOfMonth(), weekDay));
+    }
+
     private class DayViewContainer extends ViewContainer {
         TextView textView;
+        View todayIndicator;
         CalendarDay day;
 
         DayViewContainer(@NonNull View view) {
             super(view);
             textView = view.findViewById(R.id.calendarDayText);
+            todayIndicator = view.findViewById(R.id.todayIndicator);
             view.setOnClickListener(v -> {
                 if (day.getPosition() == DayPosition.MonthDate) {
-                    // 날짜 선택 시 처리
+                    previousSelectedDate = selectedDate;
+                    selectedDate = day.getDate();
+                    updateEventDateText(selectedDate);
+                    
+                    if (previousSelectedDate != null) {
+                        calendarView.notifyDateChanged(previousSelectedDate);
+                    }
+                    calendarView.notifyDateChanged(selectedDate);
+                    
                     // TODO: 선택된 날짜의 일정 표시
                 }
             });
@@ -243,7 +277,7 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        // 현재 선택된 아이템의 아이콘을 _active 버전으로 변경
+
         if (itemId == R.id.navigation_home) {
             item.setIcon(R.drawable.ic_menu_home_active);
             Intent intent = new Intent(this, MainActivity.class);
@@ -252,13 +286,12 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
             finish();
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
-            // 현재 페이지 무반응
         } else if (itemId == R.id.navigation_add) {
             item.setIcon(R.drawable.ic_menu_add_active);
-            // TODO: 추가 기능 구현
+
         } else if (itemId == R.id.navigation_notification) {
             item.setIcon(R.drawable.ic_menu_notification_active);
-            // TODO: 알림 기능 구현
+
         } else if (itemId == R.id.navigation_profile) {
             item.setIcon(R.drawable.ic_menu_person_active);
             Intent intent = new Intent(this, Profile.class);

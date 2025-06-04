@@ -135,7 +135,7 @@
                 android:id="@+id/eventDateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="4월 13일 (일)"
+                android:text="오늘"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
 
