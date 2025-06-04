@@ -1,5 +1,6 @@
 package com.example.pyeonyook_fe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,6 +12,7 @@ import com.example.pyeonyook_fe.api.AppSession;
 import com.example.pyeonyook_fe.api.Notice;
 import com.example.pyeonyook_fe.api.NoticeApi;
 import com.example.pyeonyook_fe.api.RetrofitClient;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +62,42 @@ public class NoticeActivity extends AppCompatActivity {
                 Log.e("API", "네트워크오류", t);
             }
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_notification);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home) {
+                item.setIcon(R.drawable.ic_menu_home_active);
+                Intent intents = new Intent(this, MainActivity.class);
+                intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intents);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_profile) {
+                item.setIcon(R.drawable.ic_menu_person_active);
+                Intent intents = new Intent(this, Profile.class);
+                startActivity(intents);
+                return true;
+            }else if (itemId == R.id.navigation_calendar) {
+                item.setIcon(R.drawable.ic_menu_calendar_active);
+                Intent intents = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
+                intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intents);
+                finish();
+                return true;
+            }else if (itemId == R.id.navigation_add) {
+                item.setIcon(R.drawable.ic_menu_add_active);
+                Intent intents = new Intent(this, SYU_more.class);
+                startActivity(intents);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_notification) {
+                item.setIcon(R.drawable.ic_menu_notification_active);
+
+            }
+            return false;
+        });
+
     }
 }

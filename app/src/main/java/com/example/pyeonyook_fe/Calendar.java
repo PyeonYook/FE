@@ -288,10 +288,14 @@ public class Calendar extends AppCompatActivity implements BottomNavigationView.
             item.setIcon(R.drawable.ic_menu_calendar_active);
         } else if (itemId == R.id.navigation_add) {
             item.setIcon(R.drawable.ic_menu_add_active);
-
+            Intent intent = new Intent(this, SYU_more.class);
+            startActivity(intent);
+            finish();
         } else if (itemId == R.id.navigation_notification) {
             item.setIcon(R.drawable.ic_menu_notification_active);
-
+            Intent intent = new Intent(this, NoticeActivity.class);
+            startActivity(intent);
+            finish();
         } else if (itemId == R.id.navigation_profile) {
             item.setIcon(R.drawable.ic_menu_person_active);
             Intent intent = new Intent(this, Profile.class);

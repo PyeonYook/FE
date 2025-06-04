@@ -1,70 +1,37 @@
 package com.example.pyeonyook_fe;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.net.Uri;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Profile extends AppCompatActivity {
-
-
-    private TextView tv_name;
-    private TextView tv_major;
-
-    private TextView tv_stuNum;
-    private ImageButton btn_pfModi;
-    private ImageView iv_profile;
-
-
+public class Schoolbus extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_schoolbus);
 
-        tv_name = findViewById(R.id.tv_name);
-        tv_major = findViewById(R.id.tv_major);
+        TextView tabSchoolbus = findViewById(R.id.tabSchoolbus);
+        TextView tabCampus = findViewById(R.id.tabCampus);
+        TextView tabOfficial = findViewById(R.id.tabOfficial);
 
-        tv_stuNum = findViewById(R.id.tv_stuNum);
-        btn_pfModi = findViewById(R.id.btn_pfedit);
-        iv_profile = findViewById(R.id.iv_profile);
-
-        // Intent로 값 세팅
-        Intent intent = getIntent();
-
-        String str_name = intent.getStringExtra("str_name");
-        String str_major = intent.getStringExtra("str_major");
-
-        String str_stuNum = intent.getStringExtra("str_stuNum");
-        String imageUriString = intent.getStringExtra("imageUri");
-
-
-        tv_name.setText("이름: " + (str_name != null ? str_name : ""));
-        tv_major.setText("학과: " + (str_major != null ? str_major : ""));
-
-        tv_stuNum.setText("학번: " + (str_stuNum != null ? str_stuNum : ""));
-
-        if (imageUriString != null) {
-            Uri imageUri = Uri.parse(imageUriString);
-            iv_profile.setImageURI(imageUri);
-        }
-
-        // 프로필 수정 버튼 클릭
-        btn_pfModi.setOnClickListener(v -> {
-            Intent modifyIntent = new Intent(Profile.this, ProfileModify.class);
-            startActivity(modifyIntent);
+        tabCampus.setOnClickListener(v -> {
+            Intent intent = new Intent(Schoolbus.this, SYU_more.class);
+            startActivity(intent);
+            finish();
         });
+        /* tabOfficial.setOnClickListener(v -> {
+            Intent intent = new Intent(Schoolbus.this, School_official.class);
+            startActivity(intent);
+            finish();
+        });*/
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_add);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
@@ -77,7 +44,9 @@ public class Profile extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.navigation_profile) {
                 item.setIcon(R.drawable.ic_menu_person_active);
-
+                Intent intents = new Intent(this, Profile.class);
+                startActivity(intents);
+                return true;
             }else if (itemId == R.id.navigation_calendar) {
                 item.setIcon(R.drawable.ic_menu_calendar_active);
                 Intent intents = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
@@ -87,9 +56,7 @@ public class Profile extends AppCompatActivity {
                 return true;
             }else if (itemId == R.id.navigation_add) {
                 item.setIcon(R.drawable.ic_menu_add_active);
-                Intent intents = new Intent(this, SYU_more.class);
-                startActivity(intents);
-                return true;
+
             } else if (itemId == R.id.navigation_notification) {
                 item.setIcon(R.drawable.ic_menu_notification_active);
                 Intent intents = new Intent(this, NoticeActivity.class);
@@ -99,7 +66,6 @@ public class Profile extends AppCompatActivity {
             }
             return false;
         });
-
     }
 }
 
