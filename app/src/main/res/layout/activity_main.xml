@@ -26,7 +26,7 @@
                 android:id="@+id/textViewHeaderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="편리한 삼육"
+                android:text="@string/main_title"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -35,58 +35,22 @@
                 android:layout_width="@dimen/header_underline_width"
                 android:layout_height="@dimen/header_underline_height"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/colorHeaderUnderline" />
 
-            <Space
+            <include
+                android:id="@+id/layout_horizontal_cards" 
+                layout="@layout/layout_horizontal_card_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+
+            <include
+                android:id="@+id/timetableSection"
+                android:layout_marginTop="@dimen/spacing_xlarge"
+                android:layout_marginHorizontal="5dp"
+                layout="@layout/timetable_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_large" />
-
-            <!-- Two Cards Section -->
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:clipToPadding="false"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:baselineAligned="false">
-
-                    <include
-                        android:id="@+id/cardToday"
-                        layout="@layout/item_schedule_card"
-                        android:layout_width="224dp"
-                        android:layout_height="120dp" />
-
-                    <Space
-                        android:layout_width="8dp"
-                        android:layout_height="wrap_content" />
-
-                    <include
-                        android:id="@+id/cardTomorrow"
-                        layout="@layout/item_schedule_card"
-                        android:layout_width="224dp"
-                        android:layout_height="120dp" />
-
-                    <Space
-                        android:layout_width="8dp"
-                        android:layout_height="wrap_content" />
-
-                    <include
-                        android:id="@+id/cardWeek"
-                        layout="@layout/item_schedule_card"
-                        android:layout_width="224dp"
-                        android:layout_height="120dp" />
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_xlarge" />
+                android:layout_height="wrap_content" />
 
             <!-- Keywords Section Header -->
             <com.google.android.material.card.MaterialCardView
@@ -113,7 +77,7 @@
                             android:id="@+id/textViewKeywordsLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="공지"
+                            android:text="@string/keyword"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -125,16 +89,18 @@
                             android:id="@+id/textViewKeywordsSeeAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="전체보기"
-                            android:textColor="@color/colorSecondaryText"
-                            android:textSize="13sp"
-                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackground"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?attr/selectableItemBackground"
+                            android:padding="8dp"
+                            android:text="@string/more_view"
+                            android:textColor="#757575"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            tools:ignore="TouchTargetSizeCheck" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <Space

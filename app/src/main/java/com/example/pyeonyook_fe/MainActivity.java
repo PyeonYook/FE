@@ -12,59 +12,43 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+//add
+import androidx.gridlayout.widget.GridLayout;
+import android.graphics.Color;
+import android.view.Gravity;
+import java.util.ArrayList;
+import java.util.List;
 
-// Import RecyclerView and related classes if you choose to use it
-// import androidx.recyclerview.widget.LinearLayoutManager;
-// import androidx.recyclerview.widget.RecyclerView;
-// import java.util.ArrayList;
-// import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    // If using RecyclerView:
-    // private RecyclerView recyclerViewKeywords;
-    // private KeywordAdapter keywordAdapter;
-    // private List<KeywordItem> keywordItemList;
+
 
     private BottomNavigationView bottomNavigationView;
+    // 시간표 관련 변수들
+    private GridLayout timetableGrid;
+    private TextView emptyMessage;
+    private TextView dateText;
+    private List<TimetableItem> timetableItems;
+    private int currentDayOfWeek = 0; // 0: 월요일, 1: 화요일, ...
+    private TextView[] dayButtons;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Assuming your main activity layout includes the bottom navigation
-        // and a FrameLayout or NavHostFragment to host this content.
-        // If this XML (`activity_main_content.xml`) is the *entire* content for MainActivity:
-        setContentView(R.layout.activity_main); // Or your specific layout file name
+        setContentView(R.layout.activity_main);  // 레이아웃을 먼저 설정
 
+        setupTimetableUI();  // 그 다음 UI 설정
         setupScheduleCards();
         setupKeywordsSection();
         setupBottomNavigation();
-
-        // If you are using RecyclerView for keywords:
-        /*
-        recyclerViewKeywords = findViewById(R.id.recyclerViewKeywords);
-        recyclerViewKeywords.setLayoutManager(new LinearLayoutManager(this));
-
-        keywordItemList = new ArrayList<>();
-        // Add placeholder data or fetch from a data source
-        keywordItemList.add(new KeywordItem(R.drawable.ic_avatar_placeholder, "삼육대학교", "시온관(남생활관) 움 확진자 발생에 따른 경..."));
-        keywordItemList.add(new KeywordItem(R.drawable.ic_avatar_placeholder, "학사지원팀", "email@fakedomain.net"));
-        // Add more items as needed
-
-        keywordAdapter = new KeywordAdapter(this, keywordItemList);
-        recyclerViewKeywords.setAdapter(keywordAdapter);
-        */
-
-        // If you're using the static <include> for keyword items,
-        // you can find their views if you need to interact with them,
-        // but they are already populated by the XML.
-        // Example for static item 1's avatar (if you gave it a unique ID in the included layout)
-        // ImageView avatar1 = findViewById(R.id.imageViewAvatar1); // You'd need to add this ID in the static include
     }
 
     private void setupBottomNavigation() {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);  // 리스너 설정 추가
         // 초기 선택 상태 설정 (홈 화면)
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
@@ -79,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
+            Intent intent = new Intent(MainActivity.this, com.example.pyeonyook_fe.Calendar.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+
         } else if (itemId == R.id.navigation_add) {
             item.setIcon(R.drawable.ic_menu_add_active);
         } else if (itemId == R.id.navigation_notification) {
@@ -170,38 +158,171 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return startDate + " ~ " + endDate;
     }
 
+    private void setupTimetableUI() {
+        // UI 요소 초기화
+        timetableGrid = findViewById(R.id.timetableGrid);
+        emptyMessage = findViewById(R.id.emptyMessage);
+        dateText = findViewById(R.id.dateText);
+        timetableItems = new ArrayList<>();
 
-    // If using RecyclerView, create a data model class (KeywordItem.java)
-    /*
-    public static class KeywordItem {
-        private int avatarResId; // Use String for URL if loading from network
-        private String title;
-        private String subtitle;
+        // 요일 버튼들 초기화
+        dayButtons = new TextView[]{
+                findViewById(R.id.btnMonday),
+                findViewById(R.id.btnTuesday),
+                findViewById(R.id.btnWednesday),
+                findViewById(R.id.btnThursday),
+                findViewById(R.id.btnFriday)
+        };
 
-        public KeywordItem(int avatarResId, String title, String subtitle) {
-            this.avatarResId = avatarResId;
-            this.title = title;
-            this.subtitle = subtitle;
-        }
+        // 시간표 초기화 및 데이터 로드
+        initTimetableGrid();
+        setupDayButtons();
+        updateDateDisplay();
+        loadTimetableData();
+    }
 
-        public int getAvatarResId() {
-            return avatarResId;
-        }
+    private void initTimetableGrid() {
+        if (timetableGrid == null) return;
 
-        public String getTitle() {
-            return title;
-        }
+        timetableGrid.setColumnCount(1);
+        timetableGrid.setRowCount(10);
 
-        public String getSubtitle() {
-            return subtitle;
+        // 시간별 구분선 추가
+        for (int i = 0; i < 10; i++) {
+            View line = new View(this);
+            line.setBackgroundColor(Color.parseColor("#E0E0E0"));
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.width = GridLayout.LayoutParams.MATCH_PARENT;
+            params.height = 1;
+            params.rowSpec = GridLayout.spec(i);
+            params.columnSpec = GridLayout.spec(0);
+            params.setMargins(0, 0, 0, 0);
+
+            line.setLayoutParams(params);
+            timetableGrid.addView(line);
         }
     }
-    */
 
-    // If using RecyclerView, create an Adapter (KeywordAdapter.java)
-    /*
-    // See a typical RecyclerView adapter implementation.
-    // You would inflate R.layout.list_item_keyword in its onCreateViewHolder
-    // and bind data in onBindViewHolder.
-    */
+    private void setupDayButtons() {
+        for (int i = 0; i < dayButtons.length; i++) {
+            final int dayIndex = i;
+            dayButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectDay(dayIndex);
+                    updateDayButtonStyles(dayIndex);
+                }
+            });
+        }
+
+        // 초기 선택 (월요일)
+        selectDay(0);
+        updateDayButtonStyles(0);
+    }
+
+    private void selectDay(int dayOfWeek) {
+        currentDayOfWeek = dayOfWeek;
+        updateDateDisplay();
+        loadTimetableData();
+    }
+
+    private void updateDayButtonStyles(int selectedIndex) {
+        for (int i = 0; i < dayButtons.length; i++) {
+            if (i == selectedIndex) {
+                dayButtons[i].setTextColor(Color.parseColor("#1976D2"));
+                dayButtons[i].setBackgroundColor(Color.parseColor("#E3F2FD"));
+            } else {
+                dayButtons[i].setTextColor(Color.parseColor("#666666"));
+                dayButtons[i].setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
+    }
+
+    private void updateDateDisplay() {
+        if (dateText == null) return;
+
+        Calendar calendar = Calendar.getInstance();
+        // 현재 주의 월요일부터 금요일까지 계산
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        calendar.add(Calendar.DAY_OF_YEAR, currentDayOfWeek);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M월 d일 (E)", new Locale("ko", "KR"));
+        dateText.setText(dateFormat.format(calendar.getTime()));
+    }
+
+    private void loadTimetableData() {
+        // 현재 요일에 해당하는 시간표 데이터 로드
+        timetableItems.clear();
+
+        // 예시 데이터 (실제로는 데이터베이스나 API에서 로드)
+        if (currentDayOfWeek == 1) { // 화요일 예시
+            timetableItems.add(new TimetableItem("데이터베이스", 1, 2, Color.parseColor("#4CAF50"), "화"));
+            timetableItems.add(new TimetableItem("안드로이드 프로그래밍", 4, 2, Color.parseColor("#2196F3"), "화"));
+        } else if (currentDayOfWeek == 2) { // 수요일 예시
+            timetableItems.add(new TimetableItem("웹 프로그래밍", 2, 1, Color.parseColor("#FF9800"), "수"));
+            timetableItems.add(new TimetableItem("네트워크", 5, 2, Color.parseColor("#9C27B0"), "수"));
+        }
+
+        displayTimetable();
+    }
+
+    private void displayTimetable() {
+        // 기존 시간표 아이템들 제거 (구분선은 유지)
+        removeExistingTimetableItems();
+
+        if (timetableItems.isEmpty()) {
+            showEmptyMessage();
+        } else {
+            hideEmptyMessage();
+            addTimetableItemsToGrid();
+        }
+    }
+
+    private void removeExistingTimetableItems() {
+        if (timetableGrid == null) return;
+
+        for (int i = timetableGrid.getChildCount() - 1; i >= 0; i--) {
+            View child = timetableGrid.getChildAt(i);
+            if (child instanceof TextView && child.getId() != View.NO_ID) {
+                timetableGrid.removeView(child);
+            }
+        }
+    }
+
+    private void addTimetableItemsToGrid() {
+        for (TimetableItem item : timetableItems) {
+            TextView itemView = new TextView(this);
+            itemView.setText(item.getSubjectName());
+            itemView.setBackgroundColor(item.getColor());
+            itemView.setTextColor(Color.WHITE);
+            itemView.setGravity(Gravity.CENTER);
+            itemView.setPadding(8, 4, 8, 4);
+            itemView.setTextSize(12);
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.rowSpec = GridLayout.spec(item.getStartTime(), item.getDuration());
+            params.columnSpec = GridLayout.spec(0);
+            params.width = GridLayout.LayoutParams.MATCH_PARENT;
+            params.height = 0;
+            params.setMargins(0, 2, 8, 2);
+
+            itemView.setLayoutParams(params);
+            timetableGrid.addView(itemView);
+        }
+    }
+
+    private void showEmptyMessage() {
+        if (emptyMessage != null) {
+            emptyMessage.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideEmptyMessage() {
+        if (emptyMessage != null) {
+            emptyMessage.setVisibility(View.GONE);
+        }
+    }
+
+
 }

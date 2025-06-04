@@ -1,299 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile"
-    android:orientation="vertical"
-    android:background="#FAF9F6">
+    android:background="@color/colorBackground">
 
-    <!-- 내 정보 타이틀 -->
-    <TextView
-        android:id="@+id/btn_pfModi"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_gravity="left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="내 정보"
-        android:textColor="#012460"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <!-- 프로필 박스 -->
-    <LinearLayout
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_container"
-        android:padding="16dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="@dimen/padding_standard">
 
+            <!-- 내 정보 타이틀 -->
+            <TextView
+                android:id="@+id/btn_pfModi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 정보"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <!-- 프로필 박스 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_container"
+                android:padding="16dp"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="내 프로필"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textColor="#121212"
+                        android:layout_marginBottom="8dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:id="@+id/btn_pfedit"
+                        android:layout_width="21dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/edit"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_profile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이름"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textColor="#121212"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_profile"
+                        app:layout_constraintBottom_toTopOf="@id/tv_major"
+                        android:layout_marginStart="4dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_stuNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="학번"
+                        android:textSize="10dp"
+                        android:textColor="#A2A2A2"
+                        app:layout_constraintTop_toTopOf="@id/tv_name"
+                        app:layout_constraintStart_toEndOf="@id/tv_name"
+                        android:layout_marginTop="3dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_major"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 학과"
+                        android:textSize="10dp"
+                        android:textColor="#A2A2A2"
+                        app:layout_constraintTop_toBottomOf="@id/tv_name"
+                        app:layout_constraintStart_toEndOf="@id/iv_profile"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="4dp" />
+
+                    <TextView
+                        android:id="@+id/info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="재학생"
+                        android:textSize="10dp"
+                        android:textColor="#A2A2A2"
+                        app:layout_constraintTop_toTopOf="@id/tv_major"
+                        app:layout_constraintStart_toEndOf="@id/tv_major"
+                        android:layout_marginStart="8dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <!-- 설정 섹션 -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="내 프로필"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#121212"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginTop="15dp"
+                android:text="설정"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/btn_pfedit"
-                android:layout_width="21dp"
-                android:layout_height="25dp"
-                android:src="@drawable/edit"
-                android:background="@android:color/transparent" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="계정"
+                    android:textSize="12dp"
+                    android:textColor="#121212"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FAF9F6"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아이디"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="1dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 변경"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이메일 변경"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="앱 설정"
+                    android:textSize="12dp"
+                    android:textColor="#121212"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FAF9F6"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="알림설정"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="1dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="글씨크기 설정"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="다크모드"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="이용안내"
+                    android:textSize="12dp"
+                    android:textColor="#121212"
+                    android:textStyle="bold"
+                    android:backgroundTint="#FAF9F6"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="앱버전"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="1dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이용약관"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="개인정보처리방침"
+                    android:textColor="#121212"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/round"
-                android:scaleType="centerCrop"
-                android:src="@drawable/icon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이름"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#121212"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_profile"
-                app:layout_constraintBottom_toTopOf="@id/tv_major"
-                android:layout_marginStart="4dp"/>
-
-            <TextView
-                android:id="@+id/tv_stuNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="학번"
-                android:textSize="10dp"
-                android:textColor="#A2A2A2"
-                app:layout_constraintTop_toTopOf="@id/tv_name"
-                app:layout_constraintStart_toEndOf="@id/tv_name"
-                android:layout_marginTop="3dp"/>
-
-            <TextView
-                android:id="@+id/tv_major"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 학과"
-                android:textSize="10dp"
-                android:textColor="#A2A2A2"
-                app:layout_constraintTop_toBottomOf="@id/tv_name"
-                app:layout_constraintStart_toEndOf="@id/iv_profile"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp" />
-
-            <TextView
-                android:id="@+id/info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="재학생"
-                android:textSize="10dp"
-                android:textColor="#A2A2A2"
-                app:layout_constraintTop_toTopOf="@id/tv_major"
-                app:layout_constraintStart_toEndOf="@id/tv_major"
-                android:layout_marginStart="8dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-
-    <!-- 설정 섹션 -->
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="23dp"
-        android:layout_gravity="left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="설정"
-        android:textColor="#121212"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="15dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="계정"
-            android:textSize="12dp"
-            android:textColor="#121212"
-            android:textStyle="bold"
-            android:backgroundTint="#FAF9F6"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="아이디"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="1dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="비밀번호 변경"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="이메일 변경"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="15dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="앱 설정"
-            android:textSize="12dp"
-            android:textColor="#121212"
-            android:textStyle="bold"
-            android:backgroundTint="#FAF9F6"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="알림설정"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="1dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="글씨크기 설정"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="다크모드"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="15dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="이용안내"
-            android:textSize="12dp"
-            android:textColor="#121212"
-            android:textStyle="bold"
-            android:backgroundTint="#FAF9F6"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="앱버전"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="1dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="이용약관"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="개인정보처리방침"
-            android:textColor="#121212"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="5dp"/>
-    </LinearLayout>
-
-    <!-- 바텀 네비게이션 인클루드 -->
     <include
         android:id="@+id/bottomNavigation"
         layout="@layout/layout_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
