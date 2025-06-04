@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private void setupBottomNavigation() {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);  // 리스너 설정 추가
         // 초기 선택 상태 설정 (홈 화면)
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
+            Intent intent = new Intent(MainActivity.this, com.example.pyeonyook_fe.Calendar.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+
         } else if (itemId == R.id.navigation_add) {
             item.setIcon(R.drawable.ic_menu_add_active);
         } else if (itemId == R.id.navigation_notification) {

@@ -53,6 +53,12 @@ dependencies {
     // GridLayout 의존성 추가
     implementation("androidx.gridlayout:gridlayout:1.1.0")
 
+    // cal
+//    implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
+    // implementation("com.kizitonwose.calendar:view:2.7.0")
+    implementation("com.kizitonwose.calendar:view:2.4.1")
+
+
 
     // Retrofit 라이브러리
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
