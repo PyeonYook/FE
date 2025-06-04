@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        
+
         // 현재 선택된 아이템의 아이콘을 _active 버전으로 변경
         if (itemId == R.id.navigation_home) {
             item.setIcon(R.drawable.ic_menu_home_active);

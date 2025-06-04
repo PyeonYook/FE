@@ -36,6 +36,7 @@ public class Profile extends AppCompatActivity {
             int itemId = item.getItemId();
 
             if (itemId == R.id.navigation_home) {
+                item.setIcon(R.drawable.ic_menu_home_active);
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
@@ -79,10 +80,10 @@ public class Profile extends AppCompatActivity {
         String imageUriString = intent.getStringExtra("imageUri");
 
 
-        tv_name.setText("이름: " + (str_name != null ? str_name : ""));
-        tv_major.setText("학과: " + (str_major != null ? str_major : ""));
+        tv_name.setText(str_name != null ? str_name : "김예찬");
+        tv_major.setText(str_major != null ? str_major : "컴퓨터공학부");
 
-        tv_stuNum.setText("학번: " + (str_stuNum != null ? str_stuNum : ""));
+        tv_stuNum.setText(str_stuNum != null ? str_stuNum : "2021100967");
 
         if (imageUriString != null) {
             Uri imageUri = Uri.parse(imageUriString);

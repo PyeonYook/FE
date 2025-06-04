@@ -32,6 +32,10 @@
         <activity
             android:name=".Profile"
             android:exported="false" />
+        <activity
+            android:name=".ProfileModify"
+            android:exported="false"/>
+
 
         <!-- Calendar Activity -->
         <activity
