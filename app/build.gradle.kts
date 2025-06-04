@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    implementation ("com.kizitonwose.calendar:core:2.4.0")
+    // 원하는 경우 view 라이브러리도:
+    implementation ("com.kizitonwose.calendar:view:2.4.0")
     implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth")
