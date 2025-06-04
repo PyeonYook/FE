@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Pyeonyookfe"
         tools:targetApi="31">
         <activity
+            android:name=".School_official"
+            android:exported="false" />
+        <activity
             android:name=".Schoolbus"
             android:exported="false" />
         <activity

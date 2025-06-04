@@ -24,14 +24,14 @@ public class Schoolbus extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-        /* tabOfficial.setOnClickListener(v -> {
+        tabOfficial.setOnClickListener(v -> {
             Intent intent = new Intent(Schoolbus.this, School_official.class);
             startActivity(intent);
             finish();
-        });*/
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_add);
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
