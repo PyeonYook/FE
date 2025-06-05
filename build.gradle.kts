@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.10" apply false
 }
 
+
 // 버전 에러 제거용
 tasks.withType<JavaCompile> {
     options.compilerArgs.add("-Xlint:none")

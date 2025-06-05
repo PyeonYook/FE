@@ -11,6 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.pyeonyook_fe.api.AppSession;
+import com.example.pyeonyook_fe.api.AuthApi;
+import com.example.pyeonyook_fe.api.IdTokenRequest;
+import com.example.pyeonyook_fe.api.LoginResponse;
 import com.example.pyeonyook_fe.api.Notice;
 import com.example.pyeonyook_fe.api.NoticeApi;
 import com.example.pyeonyook_fe.api.RetrofitClient;
@@ -59,11 +63,35 @@ public class Login extends AppCompatActivity {
                                 user.getIdToken(true).addOnCompleteListener(tokenTask -> {
                                     if (tokenTask.isSuccessful()) {
                                         String idToken = tokenTask.getResult().getToken();
-                                        Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show();
 
-                                        // 화면 이동(원하면 MainActivity로)
-                                        startActivity(new Intent(this, MainActivity.class));
-                                        finish();
+                                        //서버에 토큰 전송
+                                        String BASE_URL = "http://10.0.2.2:8080/";
+                                        AuthApi api = RetrofitClient.getClient(BASE_URL).create(AuthApi.class);
+                                        IdTokenRequest req = new IdTokenRequest(idToken);
+
+                                        Call<LoginResponse> call = api.loginWithFirebase(req);
+                                        call.enqueue(new Callback<LoginResponse>() {
+                                            @Override
+                                            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                                                if (response.isSuccessful() && response.body() != null) {
+                                                    // 서버에서 회원가입/로그인 완료!
+                                                    LoginResponse userInfo = response.body();
+                                                    Toast.makeText(Login.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                                                    AppSession.setIdToken(idToken);
+
+                                                    // 화면 이동(원하면 MainActivity로)
+                                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(Login.this, "서버 로그인 처리 실패", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                                                Toast.makeText(Login.this, "네트워크/서버 오류", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     } else {
                                         Toast.makeText(this, "Token 획득 실패!", Toast.LENGTH_SHORT).show();
                                     }
@@ -83,27 +111,4 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    // 서버에 공지요청 (토큰 포함)
-    private void getNoticesWithToken(String idToken) {
-        String BASE_URL = "http://10.0.2.2:8080/"; // 에뮬레이터 기준
-        NoticeApi api = RetrofitClient.getClient(BASE_URL).create(NoticeApi.class);
-
-        Call<List<Notice>> call = api.getAllNotices("Bearer " + idToken);
-        call.enqueue(new Callback<List<Notice>>() {
-            @Override
-            public void onResponse(Call<List<Notice>> call, Response<List<Notice>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Log.d("API", "공지개수: " + response.body().size());
-                    // response.body() 활용(리사이클러뷰 등)
-                } else {
-                    Log.e("API", "응답오류: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Notice>> call, Throwable t) {
-                Log.e("API", "네트워크오류", t);
-            }
-        });
-    }
 }

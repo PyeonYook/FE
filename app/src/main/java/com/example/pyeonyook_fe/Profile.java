@@ -36,28 +36,6 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        // 바텀 네비게이션 설정 (람다 방식!)
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-            if (itemId == R.id.navigation_home) {
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
-                return true;
-            } else if (itemId == R.id.navigation_profile) {
-                // 현재 페이지 무반응
-                return true;
-            }
-            // TODO: 다른 메뉴 추가
-            return false;
-        });
-        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-
-        // 뷰 연결
-
         tv_name = findViewById(R.id.tv_name);
         tv_major = findViewById(R.id.tv_major);
 
@@ -133,6 +111,44 @@ public class Profile extends AppCompatActivity {
             Intent modifyIntent = new Intent(Profile.this, Login.class);
             startActivity(modifyIntent);
         });
+      
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home) {
+                item.setIcon(R.drawable.ic_menu_home_active);
+                Intent intents = new Intent(this, MainActivity.class);
+                intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intents);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_profile) {
+                item.setIcon(R.drawable.ic_menu_person_active);
+
+            }else if (itemId == R.id.navigation_calendar) {
+                item.setIcon(R.drawable.ic_menu_calendar_active);
+                Intent intents = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
+                intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intents);
+                finish();
+                return true;
+            }else if (itemId == R.id.navigation_add) {
+                item.setIcon(R.drawable.ic_menu_add_active);
+                Intent intents = new Intent(this, SYU_more.class);
+                startActivity(intents);
+                return true;
+            } else if (itemId == R.id.navigation_notification) {
+                item.setIcon(R.drawable.ic_menu_notification_active);
+                Intent intents = new Intent(this, NoticeActivity.class);
+                startActivity(intents);
+                finish();
+                return true;
+            }
+            return false;
+        });
 
     }
 }
+

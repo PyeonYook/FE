@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    implementation ("com.kizitonwose.calendar:core:2.4.0")
+    // 원하는 경우 view 라이브러리도:
+    implementation ("com.kizitonwose.calendar:view:2.4.0")
     implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth")
@@ -49,6 +52,16 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // GridLayout 의존성 추가
+    implementation("androidx.gridlayout:gridlayout:1.1.0")
+
+    // cal
+//    implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
+    // implementation("com.kizitonwose.calendar:view:2.7.0")
+    implementation("com.kizitonwose.calendar:view:2.4.1")
+
+
 
     // Retrofit 라이브러리
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
