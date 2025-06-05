@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAF9F6">
+
+    <!-- 왼쪽에 "<"모양 뒤로가기 버튼 삽입-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알림설정"
+        android:textSize="25sp"
+        android:textColor="#012460"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="키워드 알림"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#121212"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="1dp"/>
+
+
+    <Switch
+        android:id="@+id/sw_pushKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="푸시 알림"
+        android:textSize="12sp"
+        android:textColor="#121212"
+        android:switchPadding="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"/>
+
+        <Switch
+            android:id="@+id/sw_topPageKeyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 페이지"
+            android:textSize="12sp"
+            android:textColor="#121212"
+            android:switchPadding="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="학교 일정 알림"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#121212"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"/>
+
+
+        <Switch
+            android:id="@+id/sw_pushSchedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="푸시 알림"
+            android:textSize="12sp"
+            android:textColor="#121212"
+            android:switchPadding="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+        <Switch
+            android:id="@+id/sw_topPageSchedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 페이지"
+            android:textSize="12sp"
+            android:textColor="#121212"
+            android:switchPadding="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

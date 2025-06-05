@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAF9F6">
+
+    <!-- 왼쪽에 "<"모양 뒤로가기 버튼 삽입-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 변경"
+        android:textSize="25sp"
+        android:textColor="#012460"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="새 비밀번호"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#121212"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/et_new_pw"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_container"
+        android:hint="새 비밀번호"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/et_new_pw_2"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_container"
+        android:hint="새 비밀번호 확인"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="현재 비밀번호"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#121212"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/et_ce_pw"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_container"
+        android:hint=" 현재 비밀번호"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="10dp"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_updateEmail"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:textSize="17sp"
+        android:textColor="#FAF9F6"
+        android:text="비밀번호 변경"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>
