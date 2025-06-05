@@ -2,7 +2,6 @@ package com.example.pyeonyook_fe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,18 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.pyeonyook_fe.api.AppSession;
 import com.example.pyeonyook_fe.api.AuthApi;
 import com.example.pyeonyook_fe.api.IdTokenRequest;
 import com.example.pyeonyook_fe.api.LoginResponse;
-import com.example.pyeonyook_fe.api.Notice;
-import com.example.pyeonyook_fe.api.NoticeApi;
 import com.example.pyeonyook_fe.api.RetrofitClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +42,6 @@ public class Login extends AppCompatActivity {
             String email = editTextEmail.getText().toString();
             String pw = editTextPassword.getText().toString();
 
-
             if (email.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this, "이메일과 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
                 return;
@@ -57,7 +50,7 @@ public class Login extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email, pw)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
-                            // 1. 로그인 성공시 파이어베이스 ID 토큰 획득!
+                            //로그인 성공시 파이어베이스 ID토큰 획득
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 user.getIdToken(true).addOnCompleteListener(tokenTask -> {
@@ -74,12 +67,12 @@ public class Login extends AppCompatActivity {
                                             @Override
                                             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                                                 if (response.isSuccessful() && response.body() != null) {
-                                                    // 서버에서 회원가입/로그인 완료!
+                                                    //서버에서 회원가입/로그인
                                                     LoginResponse userInfo = response.body();
                                                     Toast.makeText(Login.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                                                     AppSession.setIdToken(idToken);
 
-                                                    // 화면 이동(원하면 MainActivity로)
+                                                    //MainActivity 전환
                                                     startActivity(new Intent(Login.this, MainActivity.class));
                                                     finish();
                                                 } else {
@@ -93,7 +86,7 @@ public class Login extends AppCompatActivity {
                                             }
                                         });
                                     } else {
-                                        Toast.makeText(this, "Token 획득 실패!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(this, "Token 획득 실패", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }

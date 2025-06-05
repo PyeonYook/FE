@@ -9,7 +9,6 @@
     android:elevation="2dp">
 
     <!-- 분류 버튼 -->
-    <!-- 분류(학사/장학 등) 태그 -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNoticeType"
         android:layout_width="60dp"

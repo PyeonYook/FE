@@ -1,4 +1,4 @@
-package com.example.pyeonyook_fe; // Use your actual package name
+package com.example.pyeonyook_fe;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,8 +24,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
-
     private BottomNavigationView bottomNavigationView;
     // 시간표 관련 변수들
     private GridLayout timetableGrid;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private List<TimetableItem> timetableItems;
     private int currentDayOfWeek = 0; // 0: 월요일, 1: 화요일, ...
     private TextView[] dayButtons;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +58,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         // 현재 선택된 아이템의 아이콘을 _active 버전으로 변경
         if (itemId == R.id.navigation_home) {
             item.setIcon(R.drawable.ic_menu_home_active);
-
         } else if (itemId == R.id.navigation_calendar) {
             item.setIcon(R.drawable.ic_menu_calendar_active);
             Intent intent = new Intent(MainActivity.this, com.example.pyeonyook_fe.Calendar.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
-
         } else if (itemId == R.id.navigation_add) {
             item.setIcon(R.drawable.ic_menu_add_active);
             Intent intent = new Intent(MainActivity.this, SYU_more.class);

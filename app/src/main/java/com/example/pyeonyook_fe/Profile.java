@@ -1,27 +1,24 @@
 package com.example.pyeonyook_fe;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.net.Uri;
+import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Profile extends AppCompatActivity {
 
-
     private TextView tv_name;
     private TextView tv_major;
 
     private TextView tv_stuNum;
-    private ImageButton btn_pfModi;
+    private ImageButton btn_pfEdit;
     private ImageView iv_profile;
     private Button btn_changeEmail;
     private Button btn_changePw;
@@ -29,7 +26,6 @@ public class Profile extends AppCompatActivity {
     private Button btn_keyword;
     private Button btn_logout;
     private Button btn_deleteID;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ public class Profile extends AppCompatActivity {
         tv_major = findViewById(R.id.tv_major);
 
         tv_stuNum = findViewById(R.id.tv_stuNum);
-        btn_pfModi = findViewById(R.id.btn_pfModi);
+        btn_pfEdit = findViewById(R.id.btn_pfedit);
         iv_profile = findViewById(R.id.iv_profile);
 
         btn_changeEmail = findViewById(R.id.btn_changeEmail);
@@ -71,7 +67,7 @@ public class Profile extends AppCompatActivity {
         }
 
         // 프로필 수정 버튼 클릭
-        btn_pfModi.setOnClickListener(v -> {
+        btn_pfEdit.setOnClickListener(v -> {
             Intent modifyIntent = new Intent(Profile.this, ProfileModify.class);
             startActivity(modifyIntent);
         });

@@ -37,6 +37,7 @@ public class NoticeActivity extends AppCompatActivity {
         recyclerView.setAdapter(noticeAdapter);
 
         getNoticesWithToken(AppSession.getIdToken());
+        setupBottomNavigation();
     }
 
     private void getNoticesWithToken(String idToken) {
@@ -62,6 +63,9 @@ public class NoticeActivity extends AppCompatActivity {
                 Log.e("API", "네트워크오류", t);
             }
         });
+    }
+
+    private void setupBottomNavigation(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_notification);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -94,7 +98,6 @@ public class NoticeActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.navigation_notification) {
                 item.setIcon(R.drawable.ic_menu_notification_active);
-
             }
             return false;
         });

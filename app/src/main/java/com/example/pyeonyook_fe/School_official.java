@@ -30,8 +30,7 @@ public class School_official extends AppCompatActivity {
             finish();
         });
 
-        // 여기서 radiusInPx 선언/계산 없이 바로 숫자!
-        int cornerPx = 30; // 원하는 만큼 px 단위로 (보통 20~30px 적당)
+        int cornerPx = 30;
 
         // ===== SU-Talk =====
         ImageView ivSutalk = findViewById(R.id.sutalk_img);
