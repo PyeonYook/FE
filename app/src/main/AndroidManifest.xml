@@ -26,7 +26,7 @@
             android:name=".SYU_more"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".NoticeActivity"
@@ -38,16 +38,16 @@
             android:name=".Profile"
             android:exported="false" /> <!-- Calendar Activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
-
                 <!-- 앱 진입점 설정 -->
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Signup Activity -->
+        </activity>
+
+        <!-- Signup Activity -->
         <activity
             android:name=".Signup"
             android:exported="false" />
@@ -56,6 +56,7 @@
             android:exported="false"> <!-- 반드시 exported="true" -->
 
         </activity>
+        <activity android:name=".ProfileModify"/>
     </application>
 
 </manifest>
