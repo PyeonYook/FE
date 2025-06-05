@@ -27,6 +27,8 @@ public class Profile extends AppCompatActivity {
     private Button btn_changePw;
     private Button btn_notification;
     private Button btn_keyword;
+    private Button btn_logout;
+    private Button btn_deleteID;
 
 
     @Override
@@ -67,6 +69,8 @@ public class Profile extends AppCompatActivity {
         btn_changePw = findViewById(R.id.btn_changePw);
         btn_notification = findViewById(R.id.btn_notification);
         btn_keyword = findViewById(R.id.btn_keyword);
+        btn_logout = findViewById(R.id.btn_logout);
+        btn_deleteID = findViewById(R.id.btn_deleteID);
 
         // Intent로 값 세팅
         Intent intent = getIntent();
@@ -115,6 +119,18 @@ public class Profile extends AppCompatActivity {
         //알림설정 버튼 클릭
         btn_notification.setOnClickListener(v -> {
             Intent modifyIntent = new Intent(Profile.this, Setting_Notification.class);
+            startActivity(modifyIntent);
+        });
+
+        //회원탈퇴 버튼 클릭
+        btn_deleteID.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Setting_DeleteID.class);
+            startActivity(modifyIntent);
+        });
+
+        //로그아웃 버튼 클릭
+        btn_logout.setOnClickListener(v -> {
+            Intent modifyIntent = new Intent(Profile.this, Login.class);
             startActivity(modifyIntent);
         });
 
