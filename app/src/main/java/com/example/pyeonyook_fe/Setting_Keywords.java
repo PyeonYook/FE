@@ -1,15 +1,14 @@
 package com.example.pyeonyook_fe;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatCheckBox;
-
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Setting_Keywords extends AppCompatActivity {
 
@@ -20,10 +19,10 @@ public class Setting_Keywords extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_setting_keywords);
 
         et_keyword = findViewById(R.id.et_keyword);
-        btn_saveKeyword = findViewById(R.id.btn_save);
+        btn_saveKeyword = findViewById(R.id.btn_saveKeyword);
         btn_deleteKeyword = findViewById(R.id.btn_deleteKeyword);
         keywordContainer = findViewById(R.id.keyword_container);
 

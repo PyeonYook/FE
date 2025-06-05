@@ -68,7 +68,6 @@ public class Login extends AppCompatActivity {
                                             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                                                 if (response.isSuccessful() && response.body() != null) {
                                                     //서버에서 회원가입/로그인
-                                                    LoginResponse userInfo = response.body();
                                                     Toast.makeText(Login.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                                                     AppSession.setIdToken(idToken);
 

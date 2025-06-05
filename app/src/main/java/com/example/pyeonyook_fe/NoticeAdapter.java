@@ -52,8 +52,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
     public void onBindViewHolder(@NonNull NoticeViewHolder holder, int position) {
         Notice notice = noticeList.get(position);
 
-        if(notice.getNotice_type() == 0) {holder.btnNoticeType.setText("학사");}
-        else if(notice.getNotice_type() ==1){holder.btnNoticeType.setText("장학");}
+        if(notice.getNoticeType() == 0) {holder.btnNoticeType.setText("학사");}
+        else if(notice.getNoticeType() ==1){holder.btnNoticeType.setText("장학");}
 
         holder.tvTitle.setText(notice.getTitle());
         holder.tvAuthor.setText(notice.getAuthor());

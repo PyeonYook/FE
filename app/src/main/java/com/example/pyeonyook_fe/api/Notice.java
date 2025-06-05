@@ -2,17 +2,15 @@ package com.example.pyeonyook_fe.api;
 
 public class Notice {
     private int id;
-    private int notice_type;
+    private int noticeType;
     private String title;
     private String author;
     private String url;
     private String publishedAt;
 
-    public Notice() {}
-
     public Notice(int id, int type, String title, String author, String publishedAt) {
         this.id = id;
-        this.notice_type = type;
+        this.noticeType = type;
         this.title = title;
         this.author = author;
         this.publishedAt = publishedAt;
@@ -22,8 +20,8 @@ public class Notice {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public int getNotice_type() { return notice_type; }
-    public void setNotice_type(int notice_type) { this.notice_type = notice_type; }
+    public int getNoticeType() { return noticeType; }
+    public void setNoticeType(int noticeType) { this.noticeType = noticeType; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
