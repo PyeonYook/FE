@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -33,13 +32,13 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" /> <!-- Profile Activity -->
+            android:exported="false" />
         <activity
             android:name=".Profile"
-            android:exported="false" /> <!-- Signup Activity -->
+            android:exported="false" />
         <activity
             android:name=".Signup"
-            android:exported="false" /> <!-- Login Activity (앱 시작 진입점 / Launcher) -->
+            android:exported="false" />
         <activity    
             android:name=".School_official"
             android:exported="false" />
@@ -50,38 +49,26 @@
             android:name=".SYU_more"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".NoticeActivity"
             android:exported="false" />
         <activity
             android:name=".NoticeAdapter"
-            android:exported="false" /> <!-- Profile Activity -->
-        <activity
-            android:name=".Profile"
-            android:exported="false" /> <!-- Calendar Activity -->
+            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
-
-                <!-- 앱 진입점 설정 -->
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Signup Activity -->
-        <activity
-            android:name=".Signup"
-            android:exported="false" />
         <activity
             android:name=".Calendar"
-            android:exported="false"> <!-- 반드시 exported="true" -->
-
+            android:exported="false">
         </activity>
-        <activity android:name=".ProfileModify"/>
+        <activity
+            android:name=".ProfileModify"
+            android:exported="false"/>
     </application>
 
 </manifest>

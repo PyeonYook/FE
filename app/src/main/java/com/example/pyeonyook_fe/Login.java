@@ -64,8 +64,8 @@ public class Login extends AppCompatActivity {
                                     if (tokenTask.isSuccessful()) {
                                         String idToken = tokenTask.getResult().getToken();
 
-                                        //서버에 토큰 전송
-                                        String BASE_URL = "http://10.0.2.2:8080/";
+                                        //서버에 토큰 전송"http://10.0.2.2:8080/"
+                                        String BASE_URL = "http://192.168.219.111:8080/";
                                         AuthApi api = RetrofitClient.getClient(BASE_URL).create(AuthApi.class);
                                         IdTokenRequest req = new IdTokenRequest(idToken);
 
@@ -73,6 +73,8 @@ public class Login extends AppCompatActivity {
                                         call.enqueue(new Callback<LoginResponse>() {
                                             @Override
                                             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                                                Log.d("Login", "응답 코드: " + response.code());
+                                                Log.d("Login", "응답 바디: " + response.body());
                                                 if (response.isSuccessful() && response.body() != null) {
                                                     // 서버에서 회원가입/로그인 완료!
                                                     LoginResponse userInfo = response.body();
@@ -89,6 +91,7 @@ public class Login extends AppCompatActivity {
 
                                             @Override
                                             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                                                Log.e("Login", "Retrofit onFailure", t);
                                                 Toast.makeText(Login.this, "네트워크/서버 오류", Toast.LENGTH_SHORT).show();
                                             }
                                         });

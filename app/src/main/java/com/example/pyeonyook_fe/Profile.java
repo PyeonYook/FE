@@ -21,7 +21,7 @@ public class Profile extends AppCompatActivity {
     private TextView tv_major;
 
     private TextView tv_stuNum;
-    private ImageButton btn_pfModi;
+    private ImageButton btn_pfEdit;
     private ImageView iv_profile;
     private Button btn_changeEmail;
     private Button btn_changePw;
@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity {
         tv_major = findViewById(R.id.tv_major);
 
         tv_stuNum = findViewById(R.id.tv_stuNum);
-        btn_pfModi = findViewById(R.id.btn_pfModi);
+        btn_pfEdit = findViewById(R.id.btn_pfedit);
         iv_profile = findViewById(R.id.iv_profile);
 
         btn_changeEmail = findViewById(R.id.btn_changeEmail);
@@ -71,7 +71,7 @@ public class Profile extends AppCompatActivity {
         }
 
         // 프로필 수정 버튼 클릭
-        btn_pfModi.setOnClickListener(v -> {
+        btn_pfEdit.setOnClickListener(v -> {
             Intent modifyIntent = new Intent(Profile.this, ProfileModify.class);
             startActivity(modifyIntent);
         });
@@ -129,7 +129,7 @@ public class Profile extends AppCompatActivity {
 
             }else if (itemId == R.id.navigation_calendar) {
                 item.setIcon(R.drawable.ic_menu_calendar_active);
-                Intent intents = new Intent(this, com.example.pyeonyook_fe.Calendar.class);
+                Intent intents = new Intent(this, Calendar.class);
                 intents.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intents);
                 finish();

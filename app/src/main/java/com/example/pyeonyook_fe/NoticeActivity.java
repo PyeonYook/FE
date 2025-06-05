@@ -40,7 +40,7 @@ public class NoticeActivity extends AppCompatActivity {
     }
 
     private void getNoticesWithToken(String idToken) {
-        String BASE_URL = "http://10.0.2.2:8080/"; // 에뮬레이터 기준
+        String BASE_URL = "http://192.168.219.111:8080/"; // 에뮬레이터 기준"http://10.0.2.2:8080/"
         NoticeApi api = RetrofitClient.getClient(BASE_URL).create(NoticeApi.class);
 
         Call<List<Notice>> call = api.getAllNotices("Bearer " + idToken);
